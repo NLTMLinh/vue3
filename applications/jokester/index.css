@@ -1,0 +1,30 @@
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  margin-top: 50px;
+  color: #2c3350;
+}
+
+.joke-card {
+  border: 2px solid #2c3350;
+  border-radius: 2px;
+  padding: 5px;
+  margin: 5px;
+  position: relative;
+}
+
+.joke-card .btn-close {
+  position: absolute;
+  right: 4px;
+  height: 4px;
+  top: 10px;
+  outline: none;
+}
+
+.joke-card .btn-close:active,
+.joke-card .btn-close:hover {
+  outline: none;
+  box-shadow: none;
+}
