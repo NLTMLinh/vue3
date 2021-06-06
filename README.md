@@ -1,5 +1,4 @@
-# vue3
-# has 4 projects
+# vue3 by Yellow
 + notemaster
 + starbase
 + starbase-router
