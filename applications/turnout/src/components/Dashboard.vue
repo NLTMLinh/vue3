@@ -20,7 +20,15 @@
     <button class="btn btn-danger signout-btn" @click="_signOut">
       Sign out
     </button>
-    {{ user }}
+    <div class="container">
+      <div class="col-12 row">
+        <EventItem
+          v-for="(event, index) in events"
+          :key="index"
+          :event="event"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -28,6 +36,8 @@
 import { mapState, mapActions } from "vuex";
 import { firebaseApp } from "../firebaseApp";
 import AddEvent from "./AddEvent.vue";
+import EventItem from "./EventItem.vue";
+import { eventsRef } from "../firebaseApp";
 
 export default {
   data() {
@@ -36,10 +46,10 @@ export default {
     };
   },
   computed: {
-    ...mapState(["user"])
+    ...mapState(["user", "events"])
   },
   methods: {
-    ...mapActions(["signOut"]),
+    ...mapActions(["signOut", "setEvents"]),
     _signOut() {
       firebaseApp.auth().signOut();
       // this.$store.dispatch("signOut");
@@ -47,7 +57,17 @@ export default {
     }
   },
   components: {
-    AddEvent
+    AddEvent,
+    EventItem
+  },
+  mounted() {
+    eventsRef.on("value", snap => {
+      let events = [];
+      snap.forEach(event => {
+        events.push(event.val());
+      });
+      this.setEvents(events);
+    });
   }
 };
 </script>
