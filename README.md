@@ -1,4 +1,4 @@
-# vue3 by Yellow
+# vue2 by Yellow
 + notemaster
 + starbase
 + starbase-router
